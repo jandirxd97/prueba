@@ -38,7 +38,7 @@
                 <td>{{ equipo[3] }}</td>
                 <td>{{ equipo[4] }}</td>
                 <td>{{ equipo[8] }}</td>
-                <td>{{ '%.2f'|format(equipo[9]) }}</td>
+                <td>{{ '%.2f'|format(equipo[9] | float) }}</td>
                 <td>
                     <a href="/editar_equipo/{{ equipo[0] }}" class="btn btn-sm btn-success">Editar</a>
                     <a href="/eliminar_equipo/{{ equipo[0] }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro eliminar?')">Eliminar</a>

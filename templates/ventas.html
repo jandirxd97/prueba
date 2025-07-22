@@ -2,34 +2,33 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <title>Ventas - Inventario Clínico</title>
+    <title>Registrar Venta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body class="bg-light">
 <div class="container mt-4">
-    <h2 class="text-center text-success">Registrar Venta 🛒</h2>
-    <form action="/ventas" method="post" class="row g-3 mt-3">
-        <div class="col-md-6">
-            <label class="form-label">Nombre del Cliente</label>
-            <input type="text" name="cliente" class="form-control" placeholder="Nombre del cliente" required />
+    <h2>Registrar Venta</h2>
+    <form method="POST" action="/ventas">
+        <div class="mb-3">
+            <label>Cliente</label>
+            <input type="text" name="cliente" class="form-control" required />
         </div>
-        <div class="col-md-6">
-            <label class="form-label">Selecciona un equipo</label>
-            <select name="equipo_id" class="form-control" required>
-                {% for e in equipos %}
-                <option value="{{ e[0] }}">{{ e[1] }} - Stock: {{ e[8] }} - Precio: {{ e[9] }}</option>
+        <div class="mb-3">
+            <label>Equipo</label>
+            <select name="equipo_id" class="form-select" required>
+                <option value="">-- Seleccione equipo --</option>
+                {% for equipo in equipos %}
+                    <option value="{{ equipo[0] }}">{{ equipo[1] }} - Cantidad disponible: {{ equipo[8] }}</option>
                 {% endfor %}
             </select>
         </div>
-        <div class="col-md-6">
-            <label class="form-label">Cantidad a vender</label>
+        <div class="mb-3">
+            <label>Cantidad</label>
             <input type="number" name="cantidad" class="form-control" min="1" required />
         </div>
-        <div class="col-12 d-grid mt-3">
-            <button class="btn btn-warning">Realizar Venta ✅</button>
-        </div>
+        <button type="submit" class="btn btn-primary">Registrar Venta</button>
+        <a href="/index" class="btn btn-secondary">Cancelar</a>
     </form>
-    <a href="/index" class="btn btn-secondary mt-4">Volver al Inventario</a>
 </div>
 </body>
 </html>
