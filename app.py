@@ -185,18 +185,16 @@ def historial_ventas():
         ''').fetchall()
     return render_template('historial_ventas.html', ventas=ventas)
 
-@app.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('login'))
-
 @app.route('/debug_equipos')
 def debug_equipos():
     with sqlite3.connect(DB_NAME) as conn:
         equipos = conn.execute('SELECT * FROM equipos').fetchall()
     return {'equipos': equipos}
 
-import os
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     init_db()
