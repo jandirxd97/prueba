@@ -196,6 +196,8 @@ def debug_equipos():
         equipos = conn.execute('SELECT * FROM equipos').fetchall()
     return {'equipos': equipos}
 
+import os
+
 if __name__ == '__main__':
     init_db()
     port = int(os.environ.get('PORT', 5000))
